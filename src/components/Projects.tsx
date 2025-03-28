@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowUp, Github } from "lucide-react";
+import { Github, ArrowUp } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface GitHubRepo {
@@ -49,7 +49,8 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const username = "varshini"; // Replace with your actual GitHub username
+        const username = "varshinisr"; // Updated GitHub username
+        console.log(`Fetching repos for ${username}`);
         const response = await fetch(`https://api.github.com/users/${username}/repos`);
         
         if (!response.ok) {
@@ -57,20 +58,29 @@ const Projects = () => {
         }
         
         const allRepos: GitHubRepo[] = await response.json();
+        console.log("Fetched repos:", allRepos.map(repo => repo.name));
         
-        // Filter repos based on the ones we want
+        // Filter repos based on the ones we want - exact match or partial match
         const targetRepoNames = Object.keys(repoConfig);
-        const filteredRepos = allRepos.filter(repo => 
-          targetRepoNames.includes(repo.name)
-        );
+        const filteredRepos = allRepos.filter(repo => {
+          return targetRepoNames.some(target => 
+            repo.name.toLowerCase().includes(target.toLowerCase())
+          );
+        });
+        
+        console.log("Filtered repos:", filteredRepos.map(repo => repo.name));
+        
+        if (filteredRepos.length === 0) {
+          throw new Error("No matching repositories found");
+        }
         
         // Transform GitHub repos into project data
         const projectData = filteredRepos.map(repo => ({
           title: repo.name.replace(/-/g, " ").replace(/_/g, " "),
           description: repo.description || "No description available",
           tags: repo.topics.length > 0 ? repo.topics : ["GitHub Project"],
-          category: repoConfig[repo.name]?.category || "Project",
-          gradient: repoConfig[repo.name]?.gradient || "from-data-blue/20 to-data-teal/10",
+          category: getRepoCategory(repo.name),
+          gradient: getRepoGradient(repo.name),
           repoUrl: repo.html_url
         }));
         
@@ -92,7 +102,7 @@ const Projects = () => {
             tags: ["Azure", "Fabric", "Data Engineering"],
             category: "Data Engineering",
             gradient: "from-data-teal/20 to-data-blue/10",
-            repoUrl: "#"
+            repoUrl: "https://github.com/varshinisr/Fabric-Data-Engineering"
           },
           {
             title: "SQL Data Warehouse Project",
@@ -100,7 +110,7 @@ const Projects = () => {
             tags: ["SQL", "Data Warehouse", "ETL"],
             category: "Data Engineering",
             gradient: "from-data-purple/20 to-data-pink/10",
-            repoUrl: "#"
+            repoUrl: "https://github.com/varshinisr/sql_data_warehouse_project"
           },
           {
             title: "SQL Data Analytics Project",
@@ -108,7 +118,7 @@ const Projects = () => {
             tags: ["SQL", "Data Analysis", "Reporting"],
             category: "Data Analysis",
             gradient: "from-data-blue/20 to-data-teal/10",
-            repoUrl: "#"
+            repoUrl: "https://github.com/varshinisr/sql-data-analytics-project"
           },
           {
             title: "Netflix Project",
@@ -116,12 +126,31 @@ const Projects = () => {
             tags: ["Python", "Data Visualization", "BI"],
             category: "Business Intelligence",
             gradient: "from-data-pink/20 to-data-purple/10",
-            repoUrl: "#"
+            repoUrl: "https://github.com/varshinisr/Netflix-Project"
           }
         ];
         setProjects(fallbackProjects);
         setLoading(false);
       }
+    };
+
+    // Helper functions to match repos to categories and gradients
+    const getRepoCategory = (repoName: string): string => {
+      for (const configName in repoConfig) {
+        if (repoName.toLowerCase().includes(configName.toLowerCase())) {
+          return repoConfig[configName].category;
+        }
+      }
+      return "Project";
+    };
+
+    const getRepoGradient = (repoName: string): string => {
+      for (const configName in repoConfig) {
+        if (repoName.toLowerCase().includes(configName.toLowerCase())) {
+          return repoConfig[configName].gradient;
+        }
+      }
+      return "from-data-blue/20 to-data-teal/10";
     };
 
     fetchProjects();
@@ -177,12 +206,6 @@ const Projects = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
-          
-          <div className="mt-12 text-center">
-            <Button className="bg-data-teal hover:bg-data-teal/90">
-              View All Projects
-            </Button>
           </div>
         </>
       )}
