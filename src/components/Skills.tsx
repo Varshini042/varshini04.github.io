@@ -1,24 +1,27 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { Database, BarChart, Code, Server } from "lucide-react";
 
 const Skills = () => {
   const technicalSkills = [
     { name: "SQL", level: 95, category: "Data" },
-    { name: "Python", level: 90, category: "Programming" },
+    { name: "Power BI", level: 90, category: "Visualization" },
     { name: "Tableau", level: 92, category: "Visualization" },
-    { name: "Power BI", level: 88, category: "Visualization" },
+    { name: "Databricks", level: 88, category: "Platform" },
     { name: "ETL/ELT", level: 85, category: "Data" },
-    { name: "Data Modeling", level: 82, category: "Data" },
-    { name: "R", level: 78, category: "Programming" },
-    { name: "Cloud Data Platforms", level: 80, category: "Infrastructure" },
+    { name: "Fabric", level: 82, category: "Platform" },
+    { name: "Python", level: 88, category: "Programming" },
+    { name: "PySpark", level: 85, category: "Programming" },
+    { name: "Azure", level: 90, category: "Cloud" },
   ];
   
   const toolsAndTechnologies = [
-    "PostgreSQL", "MySQL", "AWS Redshift", "Snowflake", 
-    "Apache Airflow", "Pandas", "NumPy", "Scikit-Learn",
-    "Jupyter", "dbt", "Looker", "Excel", "Git", "Docker",
-    "Azure Data Factory", "Google BigQuery"
+    "SQL Server", "Azure SQL", "Synapse Analytics", 
+    "Power BI Desktop", "Power BI Service", "DAX", "Power Query",
+    "Tableau Desktop", "Tableau Server", "Python", "PySpark",
+    "Azure Data Factory", "Azure Databricks", "Microsoft Fabric",
+    "Azure Data Lake", "Azure Synapse"
   ];
 
   return (
@@ -65,30 +68,36 @@ const Skills = () => {
         <div className="grid md:grid-cols-3 gap-6">
           <Card className="bg-gradient-to-br from-data-blue/10 to-data-blue/5 border-none shadow-md">
             <CardContent className="p-6 text-center">
-              <h4 className="text-xl font-semibold mb-3">Data Analysis</h4>
+              <div className="flex justify-center mb-4">
+                <Database className="h-10 w-10 text-data-blue" />
+              </div>
+              <h4 className="text-xl font-semibold mb-3">Data Engineering</h4>
               <p className="text-foreground/80">
-                Expert in extracting insights from complex datasets using 
-                statistical methods and analytical tools.
+                Building robust ETL pipelines and data infrastructure with Azure, Databricks, and Microsoft Fabric.
               </p>
             </CardContent>
           </Card>
           
           <Card className="bg-gradient-to-br from-data-teal/10 to-data-teal/5 border-none shadow-md">
             <CardContent className="p-6 text-center">
+              <div className="flex justify-center mb-4">
+                <BarChart className="h-10 w-10 text-data-teal" />
+              </div>
               <h4 className="text-xl font-semibold mb-3">Business Intelligence</h4>
               <p className="text-foreground/80">
-                Creating interactive dashboards and reports that transform data 
-                into actionable business insights.
+                Creating interactive dashboards and reports with Power BI and Tableau to transform data into insights.
               </p>
             </CardContent>
           </Card>
           
           <Card className="bg-gradient-to-br from-data-purple/10 to-data-purple/5 border-none shadow-md">
             <CardContent className="p-6 text-center">
-              <h4 className="text-xl font-semibold mb-3">Data Engineering</h4>
+              <div className="flex justify-center mb-4">
+                <Code className="h-10 w-10 text-data-purple" />
+              </div>
+              <h4 className="text-xl font-semibold mb-3">Data Analysis</h4>
               <p className="text-foreground/80">
-                Building robust data pipelines and infrastructure to ensure 
-                reliable data flow across organizations.
+                Extracting insights from complex datasets using Python, PySpark and SQL to drive business decisions.
               </p>
             </CardContent>
           </Card>
