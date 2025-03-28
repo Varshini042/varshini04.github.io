@@ -1,6 +1,5 @@
 
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -39,14 +38,6 @@ const Hero = () => {
               <a href="#about">Learn More About Me</a>
             </Button>
           </div>
-          
-          <a 
-            href="#about" 
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-foreground/60 hover:text-data-teal transition-colors"
-          >
-            <span className="text-sm mb-2">Scroll Down</span>
-            <ArrowDown className="h-5 w-5 animate-bounce" />
-          </a>
         </div>
       </div>
     </div>
