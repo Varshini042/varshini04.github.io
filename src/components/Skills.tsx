@@ -1,19 +1,18 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Database, BarChart, Code, Server } from "lucide-react";
 
 const Skills = () => {
   const technicalSkills = [
-    { name: "SQL", level: 95, category: "Data" },
-    { name: "Power BI", level: 90, category: "Visualization" },
-    { name: "Tableau", level: 92, category: "Visualization" },
-    { name: "Databricks", level: 88, category: "Platform" },
-    { name: "ETL/ELT", level: 85, category: "Data" },
-    { name: "Fabric", level: 82, category: "Platform" },
-    { name: "Python", level: 88, category: "Programming" },
-    { name: "PySpark", level: 85, category: "Programming" },
-    { name: "Azure", level: 90, category: "Cloud" },
+    { name: "SQL", category: "Data" },
+    { name: "Power BI", category: "Visualization" },
+    { name: "Tableau", category: "Visualization" },
+    { name: "Databricks", category: "Platform" },
+    { name: "ETL/ELT", category: "Data" },
+    { name: "Fabric", category: "Platform" },
+    { name: "Python", category: "Programming" },
+    { name: "PySpark", category: "Programming" },
+    { name: "Azure", category: "Cloud" },
   ];
   
   const toolsAndTechnologies = [
@@ -32,18 +31,14 @@ const Skills = () => {
         <div className="space-y-6">
           <h3 className="text-2xl font-semibold text-center mb-8">Technical Skills</h3>
           
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {technicalSkills.map((skill) => (
-              <Card key={skill.name} className="overflow-hidden border-none shadow-md">
-                <CardContent className="p-6">
-                  <div className="flex justify-between mb-2">
-                    <span className="font-semibold">{skill.name}</span>
-                    <span className="text-sm bg-data-teal/10 text-data-teal px-2 py-1 rounded-full">
-                      {skill.category}
-                    </span>
-                  </div>
-                  <Progress value={skill.level} className="h-2 bg-secondary" indicatorClassName="bg-data-teal" />
-                  <span className="text-xs text-foreground/60 mt-1 block text-right">{skill.level}%</span>
+              <Card key={skill.name} className="border-none shadow-md hover:shadow-lg transition-all">
+                <CardContent className="p-4 text-center">
+                  <div className="mb-2 font-semibold">{skill.name}</div>
+                  <span className="inline-block text-xs bg-data-teal/10 text-data-teal px-2 py-1 rounded-full">
+                    {skill.category}
+                  </span>
                 </CardContent>
               </Card>
             ))}
@@ -66,7 +61,7 @@ const Skills = () => {
         </div>
         
         <div className="grid md:grid-cols-3 gap-6">
-          <Card className="bg-gradient-to-br from-data-blue/10 to-data-blue/5 border-none shadow-md">
+          <Card className="bg-gradient-to-br from-data-blue/10 to-data-blue/5 border-none shadow-md hover:shadow-lg transition-all">
             <CardContent className="p-6 text-center">
               <div className="flex justify-center mb-4">
                 <Database className="h-10 w-10 text-data-blue" />
@@ -78,7 +73,7 @@ const Skills = () => {
             </CardContent>
           </Card>
           
-          <Card className="bg-gradient-to-br from-data-teal/10 to-data-teal/5 border-none shadow-md">
+          <Card className="bg-gradient-to-br from-data-teal/10 to-data-teal/5 border-none shadow-md hover:shadow-lg transition-all">
             <CardContent className="p-6 text-center">
               <div className="flex justify-center mb-4">
                 <BarChart className="h-10 w-10 text-data-teal" />
@@ -90,7 +85,7 @@ const Skills = () => {
             </CardContent>
           </Card>
           
-          <Card className="bg-gradient-to-br from-data-purple/10 to-data-purple/5 border-none shadow-md">
+          <Card className="bg-gradient-to-br from-data-purple/10 to-data-purple/5 border-none shadow-md hover:shadow-lg transition-all">
             <CardContent className="p-6 text-center">
               <div className="flex justify-center mb-4">
                 <Code className="h-10 w-10 text-data-purple" />
