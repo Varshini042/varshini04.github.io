@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, User, Code, ArrowRight } from "lucide-react";
+import { Mail, User, Code, ArrowRight, ExternalLink } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
@@ -49,7 +49,7 @@ const Contact = () => {
       <h2 className="section-title">Get In Touch</h2>
       
       <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-        <div className="space-y-6">
+        <div className="space-y-6" data-aos="fade-right">
           <h3 className="text-2xl font-semibold">Let's Connect</h3>
           <p className="text-lg text-foreground/80">
             I'm always open to discussing new projects, challenges in data analysis, 
@@ -57,7 +57,7 @@ const Contact = () => {
           </p>
           
           <div className="space-y-4 mt-8">
-            <Card>
+            <Card className="transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center gap-4">
                   <div className="bg-data-teal/10 p-3 rounded-lg">
@@ -65,13 +65,19 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-sm font-medium text-foreground/60">Email</h4>
-                    <p className="font-medium">varshini042@gmail.com</p>
+                    <a 
+                      href="mailto:varshini042@gmail.com" 
+                      className="font-medium hover:text-data-teal transition-colors flex items-center gap-1"
+                    >
+                      varshini042@gmail.com
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
                   </div>
                 </div>
               </CardContent>
             </Card>
             
-            <Card>
+            <Card className="transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center gap-4">
                   <div className="bg-data-blue/10 p-3 rounded-lg">
@@ -79,13 +85,21 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-sm font-medium text-foreground/60">LinkedIn</h4>
-                    <p className="font-medium">linkedin.com/in/varshini-sreeramsetty</p>
+                    <a 
+                      href="https://www.linkedin.com/in/varshini-sreeramsetty" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="font-medium hover:text-data-blue transition-colors flex items-center gap-1"
+                    >
+                      linkedin.com/in/varshini-sreeramsetty
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
                   </div>
                 </div>
               </CardContent>
             </Card>
             
-            <Card>
+            <Card className="transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center gap-4">
                   <div className="bg-data-purple/10 p-3 rounded-lg">
@@ -93,7 +107,15 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-sm font-medium text-foreground/60">GitHub</h4>
-                    <p className="font-medium">github.com/varshini042</p>
+                    <a 
+                      href="https://github.com/Varshini042" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="font-medium hover:text-data-purple transition-colors flex items-center gap-1"
+                    >
+                      github.com/Varshini042
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
                   </div>
                 </div>
               </CardContent>
@@ -101,8 +123,8 @@ const Contact = () => {
           </div>
         </div>
         
-        <div>
-          <Card className="border-none shadow-md">
+        <div data-aos="fade-left">
+          <Card className="border-none shadow-md transform transition-all duration-300 hover:shadow-lg">
             <CardContent className="p-6">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
@@ -116,6 +138,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="Your name"
                     required
+                    className="transition-all duration-300 focus:border-data-teal focus:ring-data-teal/20"
                   />
                 </div>
                 
@@ -131,6 +154,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="Your email"
                     required
+                    className="transition-all duration-300 focus:border-data-teal focus:ring-data-teal/20"
                   />
                 </div>
                 
@@ -145,6 +169,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="Subject of your message"
                     required
+                    className="transition-all duration-300 focus:border-data-teal focus:ring-data-teal/20"
                   />
                 </div>
                 
@@ -160,12 +185,13 @@ const Contact = () => {
                     placeholder="Your message..."
                     rows={5}
                     required
+                    className="transition-all duration-300 focus:border-data-teal focus:ring-data-teal/20"
                   />
                 </div>
                 
                 <Button 
                   type="submit" 
-                  className="w-full bg-data-teal hover:bg-data-teal/90"
+                  className="w-full bg-data-teal hover:bg-data-teal/90 transition-all duration-300 transform hover:-translate-y-1"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
