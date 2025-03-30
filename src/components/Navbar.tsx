@@ -34,7 +34,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           <a href="#" className="flex items-center space-x-2">
             <Code className="h-6 w-6 text-data-teal" />
-            <span className="font-mono font-bold text-lg">Varshini.dev</span>
+            <span className="font-mono font-bold text-lg">Varshini S</span>
           </a>
           
           {/* Desktop Menu */}

@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center space-x-2 mb-4 md:mb-0">
             <Code className="h-5 w-5 text-data-teal" />
-            <span className="font-mono font-bold">Varshini.dev</span>
+            <span className="font-mono font-bold">Varshini S</span>
           </div>
           
           <div className="flex flex-col md:flex-row md:items-center md:space-x-8 space-y-2 md:space-y-0 text-sm text-foreground/80">
@@ -25,9 +25,9 @@ const Footer = () => {
           <p>&copy; {currentYear} Varshini Sreeramsetty. All rights reserved.</p>
           
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-data-teal transition-colors">LinkedIn</a>
-            <a href="#" className="hover:text-data-teal transition-colors">GitHub</a>
-            <a href="#" className="hover:text-data-teal transition-colors">Twitter</a>
+            <a href="https://www.linkedin.com/in/varshini-sreeramsetty" className="hover:text-data-teal transition-colors">LinkedIn</a>
+            <a href="https://github.com/Varshini042" className="hover:text-data-teal transition-colors">GitHub</a>
+            <a href="mailto:varshini042@gmail.com" className="hover:text-data-teal transition-colors">Email</a>
           </div>
         </div>
       </div>
