@@ -36,10 +36,10 @@ const About = () => {
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Education</h3>
                   <p className="text-foreground/80">
-                    I hold a Master's degree in Data Science with a focus on 
-                    advanced analytics and machine learning techniques. My technical 
-                    foundation is complemented by continuous learning in emerging 
-                    data technologies.
+                    I hold a Bachelor of Technology in Electronics and Communications,
+                    which provided me with a strong technical foundation. I am also a 
+                    Microsoft Certified Power BI Data Analyst, specializing in data 
+                    visualization and business analytics.
                   </p>
                 </div>
               </div>
