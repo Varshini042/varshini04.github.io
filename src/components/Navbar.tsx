@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Code, Menu, X } from "lucide-react";
+import ResumeButton from "./ResumeButton";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,9 +49,7 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <Button variant="default" className="bg-data-teal hover:bg-data-teal/90">
-              <a href="#contact">Hire Me</a>
-            </Button>
+            <ResumeButton />
           </nav>
           
           {/* Mobile Menu Button */}
@@ -78,9 +77,9 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <Button variant="default" className="bg-data-teal hover:bg-data-teal/90 w-full" onClick={toggleMenu}>
-              <a href="#contact">Hire Me</a>
-            </Button>
+            <div onClick={toggleMenu}>
+              <ResumeButton />
+            </div>
           </nav>
         </div>
       )}

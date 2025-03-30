@@ -14,11 +14,25 @@ const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => {
+    // Initialize AOS with updated configuration
     AOS.init({
       duration: 800,
       once: false,
-      mirror: true,
+      mirror: false,
+      offset: 100,
+      easing: 'ease-out-cubic',
+      delay: 50,
+      disable: 'mobile'
     });
+
+    // Refresh AOS on window resize and when page is fully loaded
+    window.addEventListener('resize', AOS.refresh);
+    window.addEventListener('load', AOS.refresh);
+
+    return () => {
+      window.removeEventListener('resize', AOS.refresh);
+      window.removeEventListener('load', AOS.refresh);
+    };
   }, []);
 
   return (

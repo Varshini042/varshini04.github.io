@@ -4,8 +4,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, User, Code, ArrowRight, ExternalLink } from "lucide-react";
+import { Mail, User, Code, ArrowRight, ExternalLink, MapPin, Phone } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import ResumeButton from "./ResumeButton";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -22,39 +23,60 @@ const Contact = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Create a mailto link with the form data
+      const mailtoLink = `mailto:varshini042@gmail.com?subject=${encodeURIComponent(
+        formData.subject
+      )}&body=${encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      )}`;
+      
+      // Open the mail client
+      window.open(mailtoLink, "_blank");
+      
       toast({
-        title: "Message sent!",
-        description: "Thanks for reaching out. I'll get back to you soon.",
+        title: "Message ready to send",
+        description: "Your default email client has been opened with your message.",
       });
       
+      // Reset form
       setFormData({
         name: "",
         email: "",
         subject: "",
         message: "",
       });
-      
+    } catch (error) {
+      console.error("Error sending message:", error);
+      toast({
+        title: "Error",
+        description: "There was a problem preparing your message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (
     <section id="contact" className="section-container bg-secondary/50">
-      <h2 className="section-title">Get In Touch</h2>
+      <h2 className="section-title" data-aos="fade-up">Get In Touch</h2>
       
       <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-        <div className="space-y-6" data-aos="fade-right">
+        <div className="space-y-6" data-aos="fade-right" data-aos-delay="100">
           <h3 className="text-2xl font-semibold">Let's Connect</h3>
           <p className="text-lg text-foreground/80">
             I'm always open to discussing new projects, challenges in data analysis, 
             or opportunities to collaborate on data initiatives.
           </p>
+          
+          <div className="mt-6 flex justify-center md:justify-start">
+            <ResumeButton />
+          </div>
           
           <div className="space-y-4 mt-8">
             <Card className="transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
@@ -120,10 +142,44 @@ const Contact = () => {
                 </div>
               </CardContent>
             </Card>
+            
+            <Card className="transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-4">
+                  <div className="bg-data-orange/10 p-3 rounded-lg">
+                    <MapPin className="h-6 w-6 text-data-orange" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-medium text-foreground/60">Location</h4>
+                    <p className="font-medium">Hyderabad, Telangana</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-4">
+                  <div className="bg-green-500/10 p-3 rounded-lg">
+                    <Phone className="h-6 w-6 text-green-500" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-medium text-foreground/60">Phone</h4>
+                    <a 
+                      href="tel:+916281136925" 
+                      className="font-medium hover:text-green-500 transition-colors flex items-center gap-1"
+                    >
+                      +91 6281136925
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
         
-        <div data-aos="fade-left">
+        <div data-aos="fade-left" data-aos-delay="200">
           <Card className="border-none shadow-md transform transition-all duration-300 hover:shadow-lg">
             <CardContent className="p-6">
               <form onSubmit={handleSubmit} className="space-y-4">
