@@ -1,7 +1,46 @@
 
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
 
 const Hero = () => {
+  const roles = ["Data Analyst", "BI Developer", "Data Engineer"];
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  
+  useEffect(() => {
+    const typingInterval = 100; // Speed of typing (lower is faster)
+    const deletingInterval = 50; // Speed of deleting (lower is faster)
+    const pauseTime = 1500; // Pause time when role is fully typed
+    
+    let timer: number;
+    
+    const currentRole = roles[currentRoleIndex];
+    
+    if (!isDeleting && displayText === currentRole) {
+      // Full word typed, wait before deleting
+      timer = window.setTimeout(() => {
+        setIsDeleting(true);
+      }, pauseTime);
+    } else if (isDeleting && displayText === "") {
+      // Word fully deleted, move to next role
+      setIsDeleting(false);
+      setCurrentRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
+      timer = window.setTimeout(() => {}, deletingInterval);
+    } else {
+      // Type or delete characters
+      timer = window.setTimeout(() => {
+        if (isDeleting) {
+          setDisplayText(prev => prev.substring(0, prev.length - 1));
+        } else {
+          setDisplayText(prev => currentRole.substring(0, prev.length + 1));
+        }
+      }, isDeleting ? deletingInterval : typingInterval);
+    }
+    
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, currentRoleIndex, roles]);
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-secondary pt-16">
       <div className="container px-4 md:px-6 py-8 md:py-10 relative">
@@ -19,9 +58,10 @@ const Hero = () => {
             </span>
           </h1>
           
-          <div className="typing-container mb-6 md:mb-8 pb-2">
-            <span className="font-mono text-xl md:text-2xl font-semibold">
-              Data Analyst | BI Developer | Data Engineer
+          <div className="mb-6 md:mb-8 h-8 flex items-center justify-center">
+            <span className="font-mono text-xl md:text-2xl font-semibold relative">
+              {displayText}
+              <span className="absolute right-[-8px] top-0 h-full w-[2px] bg-data-teal animate-pulse"></span>
             </span>
           </div>
           

@@ -41,7 +41,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-6 text-center text-xs text-foreground/40">
-          <p>&copy; {currentYear} Varshini Sreeramsetty. All rights reserved.</p>
+          <p>&copy; {currentYear} <a href="https://varshini-sreeramsetty-portfolio.com" className="hover:text-data-teal transition-colors">Varshini_Sreeramsetty-portfolio</a>. All rights reserved.</p>
         </div>
       </div>
     </footer>
