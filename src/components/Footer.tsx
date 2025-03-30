@@ -1,5 +1,5 @@
 
-import { Code, Phone, Mail, MapPin } from "lucide-react";
+import { Code, Mail, MapPin } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -23,10 +23,6 @@ const Footer = () => {
         
         <div className="mt-8 pt-6 border-t flex flex-col md:flex-row justify-between items-center text-sm text-foreground/60">
           <div className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4">
-            <div className="flex items-center">
-              <Phone className="h-4 w-4 mr-2 text-data-teal" />
-              <a href="tel:+916281136925" className="hover:text-data-teal transition-colors">+91 6281136925</a>
-            </div>
             <div className="flex items-center">
               <Mail className="h-4 w-4 mr-2 text-data-teal" />
               <a href="mailto:varshini042@gmail.com" className="hover:text-data-teal transition-colors">varshini042@gmail.com</a>

@@ -49,7 +49,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const username = "varshinisr"; // Updated GitHub username
+        const username = "Varshini042"; // Updated to correct GitHub username
         console.log(`Fetching repos for ${username}`);
         const response = await fetch(`https://api.github.com/users/${username}/repos`);
         
@@ -60,7 +60,7 @@ const Projects = () => {
         const allRepos: GitHubRepo[] = await response.json();
         console.log("Fetched repos:", allRepos.map(repo => repo.name));
         
-        // Filter repos based on the ones we want - exact match or partial match
+        // Filter repos based on the ones we want - either exact match or partial match
         const targetRepoNames = Object.keys(repoConfig);
         const filteredRepos = allRepos.filter(repo => {
           return targetRepoNames.some(target => 
@@ -71,7 +71,9 @@ const Projects = () => {
         console.log("Filtered repos:", filteredRepos.map(repo => repo.name));
         
         if (filteredRepos.length === 0) {
-          throw new Error("No matching repositories found");
+          // Use fallback data if no repos found
+          useFallbackData();
+          return;
         }
         
         // Transform GitHub repos into project data
@@ -88,50 +90,54 @@ const Projects = () => {
         setLoading(false);
       } catch (error) {
         console.error("Error fetching GitHub repos:", error);
-        toast({
-          title: "Error fetching projects",
-          description: "Using fallback project data instead",
-          variant: "destructive"
-        });
-        
-        // Fallback data in case of API failure
-        const fallbackProjects = [
-          {
-            title: "Fabric Data Engineering",
-            description: "Microsoft Fabric implementation for modern data engineering pipelines and workflows.",
-            tags: ["Azure", "Fabric", "Data Engineering"],
-            category: "Data Engineering",
-            gradient: "from-data-teal/20 to-data-blue/10",
-            repoUrl: "https://github.com/varshinisr/Fabric-Data-Engineering"
-          },
-          {
-            title: "SQL Data Warehouse Project",
-            description: "End-to-end data warehouse implementation using SQL Server and modern data modeling techniques.",
-            tags: ["SQL", "Data Warehouse", "ETL"],
-            category: "Data Engineering",
-            gradient: "from-data-purple/20 to-data-pink/10",
-            repoUrl: "https://github.com/varshinisr/sql_data_warehouse_project"
-          },
-          {
-            title: "SQL Data Analytics Project",
-            description: "Advanced SQL analytics project with complex queries and performance optimization techniques.",
-            tags: ["SQL", "Data Analysis", "Reporting"],
-            category: "Data Analysis",
-            gradient: "from-data-blue/20 to-data-teal/10",
-            repoUrl: "https://github.com/varshinisr/sql-data-analytics-project"
-          },
-          {
-            title: "Netflix Project",
-            description: "Data analysis and visualization project based on Netflix viewing data.",
-            tags: ["Python", "Data Visualization", "BI"],
-            category: "Business Intelligence",
-            gradient: "from-data-pink/20 to-data-purple/10",
-            repoUrl: "https://github.com/varshinisr/Netflix-Project"
-          }
-        ];
-        setProjects(fallbackProjects);
-        setLoading(false);
+        useFallbackData();
       }
+    };
+
+    // Helper function to use fallback data
+    const useFallbackData = () => {
+      toast({
+        title: "Using sample projects",
+        description: "Showing example project data instead",
+      });
+      
+      // Fallback data in case of API failure
+      const fallbackProjects = [
+        {
+          title: "Fabric Data Engineering",
+          description: "Microsoft Fabric implementation for modern data engineering pipelines and workflows.",
+          tags: ["Azure", "Fabric", "Data Engineering"],
+          category: "Data Engineering",
+          gradient: "from-data-teal/20 to-data-blue/10",
+          repoUrl: "https://github.com/Varshini042/Fabric-Data-Engineering"
+        },
+        {
+          title: "SQL Data Warehouse Project",
+          description: "End-to-end data warehouse implementation using SQL Server and modern data modeling techniques.",
+          tags: ["SQL", "Data Warehouse", "ETL"],
+          category: "Data Engineering",
+          gradient: "from-data-purple/20 to-data-pink/10",
+          repoUrl: "https://github.com/Varshini042/sql_data_warehouse_project"
+        },
+        {
+          title: "SQL Data Analytics Project",
+          description: "Advanced SQL analytics project with complex queries and performance optimization techniques.",
+          tags: ["SQL", "Data Analysis", "Reporting"],
+          category: "Data Analysis",
+          gradient: "from-data-blue/20 to-data-teal/10",
+          repoUrl: "https://github.com/Varshini042/sql-data-analytics-project"
+        },
+        {
+          title: "Netflix Project",
+          description: "Data analysis and visualization project based on Netflix viewing data.",
+          tags: ["Python", "Data Visualization", "BI"],
+          category: "Business Intelligence",
+          gradient: "from-data-pink/20 to-data-purple/10",
+          repoUrl: "https://github.com/Varshini042/Netflix-Project"
+        }
+      ];
+      setProjects(fallbackProjects);
+      setLoading(false);
     };
 
     // Helper functions to match repos to categories and gradients
@@ -178,6 +184,8 @@ const Projects = () => {
               <Card 
                 key={index}
                 className={`overflow-hidden border-none shadow-md bg-gradient-to-br ${project.gradient} hover:shadow-lg transition-shadow`}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
               >
                 <CardContent className="p-6">
                   <div className="mb-2">
@@ -196,13 +204,14 @@ const Projects = () => {
                       </span>
                     ))}
                   </div>
-                  <Button 
-                    variant="link" 
-                    className="p-0 h-auto text-data-teal hover:text-data-teal/80"
-                    onClick={() => window.open(project.repoUrl, "_blank")}
+                  <a 
+                    href={project.repoUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-data-teal hover:text-data-teal/80 transition-colors"
                   >
                     View on GitHub <Github className="h-3.5 w-3.5 ml-1.5" />
-                  </Button>
+                  </a>
                 </CardContent>
               </Card>
             ))}

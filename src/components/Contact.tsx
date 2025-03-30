@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, User, Code, ArrowRight, ExternalLink, MapPin, Phone } from "lucide-react";
+import { Mail, User, Code, ArrowRight, ExternalLink, MapPin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import ResumeButton from "./ResumeButton";
 
@@ -66,7 +66,7 @@ const Contact = () => {
     <section id="contact" className="section-container bg-secondary/50">
       <h2 className="section-title" data-aos="fade-up">Get In Touch</h2>
       
-      <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+      <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto items-start">
         <div className="space-y-6" data-aos="fade-right" data-aos-delay="100">
           <h3 className="text-2xl font-semibold">Let's Connect</h3>
           <p className="text-lg text-foreground/80">
@@ -156,31 +156,11 @@ const Contact = () => {
                 </div>
               </CardContent>
             </Card>
-            
-            <Card className="transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-4">
-                  <div className="bg-green-500/10 p-3 rounded-lg">
-                    <Phone className="h-6 w-6 text-green-500" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-medium text-foreground/60">Phone</h4>
-                    <a 
-                      href="tel:+916281136925" 
-                      className="font-medium hover:text-green-500 transition-colors flex items-center gap-1"
-                    >
-                      +91 6281136925
-                      <ExternalLink className="h-3 w-3" />
-                    </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
           </div>
         </div>
         
         <div data-aos="fade-left" data-aos-delay="200">
-          <Card className="border-none shadow-md transform transition-all duration-300 hover:shadow-lg">
+          <Card className="border-none shadow-md transform transition-all duration-300 hover:shadow-lg h-full">
             <CardContent className="p-6">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
