@@ -27,7 +27,7 @@ const FeaturedProjectsCarousel = ({ projects }: FeaturedProjectsCarouselProps) =
       >
         <CarouselContent>
           {featuredProjects.map((project, index) => (
-            <CarouselItem key={`carousel-${index}`} className="sm:basis-1/1 md:basis-1/2 lg:basis-1/3">
+            <CarouselItem key={`carousel-${index}`} className="sm:basis-1/1 md:basis-1/2 lg:basis-1/3 p-2">
               <motion.div 
                 whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.3 }}

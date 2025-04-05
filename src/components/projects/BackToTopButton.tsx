@@ -27,10 +27,15 @@ const BackToTopButton = () => {
     >
       <Button 
         onClick={scrollToTop} 
-        className="fixed bottom-8 right-8 p-3 bg-data-teal hover:bg-data-teal/90 rounded-full shadow-lg z-50 transition-transform"
+        className="fixed bottom-8 right-8 p-3 bg-data-teal hover:bg-data-teal/90 rounded-full shadow-lg z-50 transition-all duration-300 border border-data-teal/20"
         aria-label="Back to top"
       >
-        <ArrowUp className="h-5 w-5" />
+        <motion.div
+          animate={{ y: [0, -3, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+        >
+          <ArrowUp className="h-5 w-5" />
+        </motion.div>
       </Button>
     </motion.div>
   );

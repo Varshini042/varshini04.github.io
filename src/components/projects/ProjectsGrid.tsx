@@ -31,10 +31,11 @@ const ProjectsGrid = ({ projects }: ProjectsGridProps) => {
 
   return (
     <motion.div 
-      className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+      className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
       variants={container}
       initial="hidden"
-      animate="show"
+      whileInView="show"
+      viewport={{ once: true, margin: "-100px" }}
     >
       {projects.map((project, index) => (
         <motion.div key={index} variants={item} className="h-full flex">
