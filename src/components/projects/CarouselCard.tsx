@@ -16,16 +16,11 @@ const CarouselCard = ({ project }: CarouselCardProps) => {
           <span className="text-xs font-medium bg-background/90 text-foreground/90 px-3 py-1 rounded-full">
             {project.category}
           </span>
-          <motion.div
-            initial={{ rotate: 0 }}
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="w-8 h-8 flex items-center justify-center"
-          >
+          <div className="w-8 h-8 flex items-center justify-center">
             <div className="w-7 h-7 rounded-full bg-data-teal/20 flex items-center justify-center">
               <Github className="h-3.5 w-3.5 text-data-teal" />
             </div>
-          </motion.div>
+          </div>
         </div>
         <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
         <p className="text-foreground/80 mb-4 line-clamp-3">

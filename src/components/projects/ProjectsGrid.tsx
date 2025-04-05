@@ -37,8 +37,10 @@ const ProjectsGrid = ({ projects }: ProjectsGridProps) => {
       animate="show"
     >
       {projects.map((project, index) => (
-        <motion.div key={index} variants={item}>
-          <ProjectCard project={project} index={index} />
+        <motion.div key={index} variants={item} className="h-full flex">
+          <div className="h-full w-full">
+            <ProjectCard project={project} index={index} />
+          </div>
         </motion.div>
       ))}
     </motion.div>

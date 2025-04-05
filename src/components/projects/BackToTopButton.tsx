@@ -20,10 +20,14 @@ const BackToTopButton = () => {
         ease: "easeOut",
         delay: 0.5
       }}
+      whileHover={{ 
+        scale: 1.1,
+        boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.1)"
+      }}
     >
       <Button 
         onClick={scrollToTop} 
-        className="fixed bottom-8 right-8 p-3 bg-data-teal hover:bg-data-teal/90 rounded-full shadow-lg z-50 hover:scale-110 transition-transform"
+        className="fixed bottom-8 right-8 p-3 bg-data-teal hover:bg-data-teal/90 rounded-full shadow-lg z-50 transition-transform"
         aria-label="Back to top"
       >
         <ArrowUp className="h-5 w-5" />

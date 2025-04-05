@@ -3,8 +3,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { ProjectData } from "./types";
 import CarouselCard from "./CarouselCard";
@@ -33,16 +31,13 @@ const FeaturedProjectsCarousel = ({ projects }: FeaturedProjectsCarouselProps) =
               <motion.div 
                 whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.3 }}
+                className="h-full"
               >
                 <CarouselCard project={project} />
               </motion.div>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <div className="flex justify-center mt-4">
-          <CarouselPrevious className="relative transform-none mx-2 bg-data-teal/20 text-data-teal hover:bg-data-teal/30" />
-          <CarouselNext className="relative transform-none mx-2 bg-data-teal/20 text-data-teal hover:bg-data-teal/30" />
-        </div>
       </Carousel>
     </div>
   );
