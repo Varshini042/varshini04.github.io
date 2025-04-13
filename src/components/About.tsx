@@ -1,6 +1,6 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { User, Book, Briefcase, Lightning, Brain, Target } from "lucide-react";
+import { User, Book, Briefcase, Zap, Brain, Target } from "lucide-react";
 import { motion } from "framer-motion";
 
 const About = () => {
@@ -36,11 +36,27 @@ const About = () => {
             viewport={{ once: true }}
           >
             <div className="bg-gradient-to-br from-data-blue/20 to-data-teal/20 backdrop-blur-sm p-6 rounded-2xl border border-white/10 shadow-xl">
-              <img
-                src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&q=80&w=774&ixlib=rb-4.0.3"
-                alt="Data Professional at Work"
-                className="rounded-xl w-full h-64 object-cover mb-6 shadow-lg"
-              />
+              <motion.div 
+                className="mb-6 relative overflow-hidden rounded-xl"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=870"
+                  alt="Data Visualization Art"
+                  className="rounded-xl w-full h-64 object-cover shadow-lg"
+                />
+                <motion.div 
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <p className="text-sm font-medium">Transforming data into meaningful insights</p>
+                  </div>
+                </motion.div>
+              </motion.div>
               <div className="space-y-4">
                 <h3 className="text-2xl font-semibold bg-gradient-to-r from-data-blue to-data-teal bg-clip-text text-transparent">My Approach to Data</h3>
                 <p className="text-foreground/80">
