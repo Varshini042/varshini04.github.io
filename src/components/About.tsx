@@ -1,140 +1,96 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { User, Book, Briefcase, Lightning, Brain, Target } from "lucide-react";
-import { motion } from "framer-motion";
+import { User, Book, Briefcase } from "lucide-react";
 
 const About = () => {
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.1,
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    })
-  };
-
   return (
-    <section id="about" className="section-container relative">
-      <div className="absolute inset-0 overflow-hidden opacity-10 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-data-blue rounded-full mix-blend-multiply filter blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-data-teal rounded-full mix-blend-multiply filter blur-3xl"></div>
-      </div>
-
-      <h2 className="section-title mb-10">About Me</h2>
+    <section id="about" className="section-container">
+      <h2 className="section-title">About Me</h2>
       
       <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-        <div className="space-y-6">
-          <motion.div 
-            className="relative"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="bg-gradient-to-br from-data-blue/20 to-data-teal/20 backdrop-blur-sm p-6 rounded-2xl border border-white/10 shadow-xl">
-              <img
-                src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&q=80&w=774&ixlib=rb-4.0.3"
-                alt="Data Professional at Work"
-                className="rounded-xl w-full h-64 object-cover mb-6 shadow-lg"
-              />
-              <div className="space-y-4">
-                <h3 className="text-2xl font-semibold bg-gradient-to-r from-data-blue to-data-teal bg-clip-text text-transparent">My Approach to Data</h3>
-                <p className="text-foreground/80">
-                  I believe that effective data work is about more than just technical skills—it's about 
-                  understanding business needs, asking the right questions, and communicating insights 
-                  in a way that drives action.
-                </p>
-                <p className="text-foreground/80">
-                  My approach combines technical rigor with business acumen to deliver solutions that 
-                  create real value. I focus on building scalable, maintainable data systems that evolve 
-                  with your organization's needs.
-                </p>
+        <div className="space-y-4">
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-start gap-4">
+                <div className="bg-data-purple/10 p-3 rounded-lg">
+                  <User className="h-6 w-6 text-data-purple" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Who I Am</h3>
+                  <p className="text-foreground/80">
+                    I'm a passionate data professional with expertise in analytics, 
+                    business intelligence, and data engineering. I specialize in transforming 
+                    raw data into actionable insights that drive business decisions.
+                  </p>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-start gap-4">
+                <div className="bg-data-blue/10 p-3 rounded-lg">
+                  <Book className="h-6 w-6 text-data-blue" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Education</h3>
+                  <p className="text-foreground/80">
+                    I hold a Bachelor of Technology in Electronics and Communications,
+                    which provided me with a strong technical foundation. I am also a 
+                    Microsoft Certified Power BI Data Analyst, specializing in data 
+                    visualization and business analytics.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-start gap-4">
+                <div className="bg-data-teal/10 p-3 rounded-lg">
+                  <Briefcase className="h-6 w-6 text-data-teal" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Experience</h3>
+                  <p className="text-foreground/80">
+                    With experience across various industries, I've developed expertise 
+                    in data pipeline development, BI dashboard creation, and analytical 
+                    reporting. I've helped organizations leverage their data assets to 
+                    gain competitive advantages.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
         
-        <div className="space-y-5">
-          {[
-            {
-              icon: <User className="h-6 w-6 text-data-purple" />,
-              title: "Who I Am",
-              content: "I'm a passionate data professional with expertise in analytics, business intelligence, and data engineering. I specialize in transforming raw data into actionable insights that drive business decisions.",
-              color: "data-purple",
-              delay: 0
-            },
-            {
-              icon: <Book className="h-6 w-6 text-data-blue" />,
-              title: "Education",
-              content: "I hold a Bachelor of Technology in Electronics and Communications, which provided me with a strong technical foundation. I am also a Microsoft Certified Power BI Data Analyst, specializing in data visualization and business analytics.",
-              color: "data-blue",
-              delay: 1
-            },
-            {
-              icon: <Briefcase className="h-6 w-6 text-data-teal" />,
-              title: "Experience",
-              content: "With experience across various industries, I've developed expertise in data pipeline development, BI dashboard creation, and analytical reporting. I've helped organizations leverage their data assets to gain competitive advantages.",
-              color: "data-teal",
-              delay: 2
-            }
-          ].map((item, i) => (
-            <motion.div
-              key={i}
-              custom={i}
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-            >
-              <Card className="overflow-hidden border-t-2" style={{ borderTopColor: `var(--${item.color})` }}>
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className={`bg-${item.color}/10 p-3 rounded-lg`}>
-                      {item.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                      <p className="text-foreground/80">
-                        {item.content}
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+        <div className="space-y-6">
+          <h3 className="text-2xl font-semibold">My Approach to Data</h3>
+          <p className="text-lg text-foreground/80">
+            I believe that effective data work is about more than just technical skills—it's about 
+            understanding business needs, asking the right questions, and communicating insights 
+            in a way that drives action.
+          </p>
+          <p className="text-lg text-foreground/80">
+            My approach combines technical rigor with business acumen to deliver solutions that 
+            create real value. I focus on building scalable, maintainable data systems that evolve 
+            with your organization's needs.
+          </p>
+          <p className="text-lg text-foreground/80">
+            Whether I'm building ETL pipelines, creating interactive dashboards, or performing 
+            complex analyses, my goal remains the same: to help you harness the power of your data.
+          </p>
           
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            viewport={{ once: true }}
-            className="mt-6"
-          >
-            <div className="flex flex-wrap gap-3">
-              {[
-                { text: "Data Analytics", color: "data-blue" },
-                { text: "Business Intelligence", color: "data-teal" },
-                { text: "Data Engineering", color: "data-purple" },
-                { text: "Data Visualization", color: "data-pink" },
-                { text: "ML Integration", color: "data-blue" },
-                { text: "Data Strategy", color: "data-teal" }
-              ].map((tag, i) => (
-                <motion.span
-                  key={i}
-                  className={`bg-${tag.color}/10 text-${tag.color} px-4 py-2 rounded-full text-sm font-medium`}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {tag.text}
-                </motion.span>
-              ))}
-            </div>
-          </motion.div>
+          <div className="flex flex-wrap gap-4 mt-6">
+            <span className="bg-data-blue/10 text-data-blue px-4 py-2 rounded-full">Data Analytics</span>
+            <span className="bg-data-teal/10 text-data-teal px-4 py-2 rounded-full">Business Intelligence</span>
+            <span className="bg-data-purple/10 text-data-purple px-4 py-2 rounded-full">Data Engineering</span>
+            <span className="bg-data-pink/10 text-data-pink px-4 py-2 rounded-full">Data Visualization</span>
+            <span className="bg-data-blue/10 text-data-blue px-4 py-2 rounded-full">ML Integration</span>
+            <span className="bg-data-teal/10 text-data-teal px-4 py-2 rounded-full">Data Strategy</span>
+          </div>
         </div>
       </div>
     </section>
