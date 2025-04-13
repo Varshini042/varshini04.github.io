@@ -41,21 +41,33 @@ const About = () => {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <img
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=870"
-                  alt="Data Visualization Art"
-                  className="rounded-xl w-full h-64 object-cover shadow-lg"
-                />
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <p className="text-sm font-medium">Transforming data into meaningful insights</p>
+                <div className="rounded-xl w-full h-64 bg-gradient-to-br from-data-blue/30 to-data-purple/30 flex items-center justify-center p-4 shadow-lg relative overflow-hidden">
+                  <div className="absolute w-full h-full">
+                    <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-data-blue/30 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+                    <div className="absolute bottom-1/3 right-1/4 w-40 h-40 bg-data-purple/30 rounded-full mix-blend-multiply filter blur-xl animate-pulse" style={{ animationDelay: "1s" }}></div>
+                    <div className="absolute top-1/3 right-1/3 w-28 h-28 bg-data-teal/30 rounded-full mix-blend-multiply filter blur-xl animate-pulse" style={{ animationDelay: "2s" }}></div>
                   </div>
-                </motion.div>
+                  <div className="relative z-10 flex flex-col items-center">
+                    <svg width="120" height="120" viewBox="0 0 120 120" className="text-white">
+                      <g fill="currentColor" opacity="0.7">
+                        <circle cx="60" cy="60" r="10" />
+                        <circle cx="30" cy="40" r="8" />
+                        <circle cx="80" cy="30" r="6" />
+                        <circle cx="90" cy="80" r="9" />
+                        <circle cx="40" cy="90" r="7" />
+                        <circle cx="20" cy="70" r="5" />
+                        <circle cx="100" cy="50" r="4" />
+                        <line x1="60" y1="60" x2="30" y2="40" stroke="currentColor" strokeWidth="1" />
+                        <line x1="60" y1="60" x2="80" y2="30" stroke="currentColor" strokeWidth="1" />
+                        <line x1="60" y1="60" x2="90" y2="80" stroke="currentColor" strokeWidth="1" />
+                        <line x1="60" y1="60" x2="40" y2="90" stroke="currentColor" strokeWidth="1" />
+                        <line x1="60" y1="60" x2="20" y2="70" stroke="currentColor" strokeWidth="1" />
+                        <line x1="60" y1="60" x2="100" y2="50" stroke="currentColor" strokeWidth="1" />
+                      </g>
+                    </svg>
+                    <p className="mt-4 text-sm font-medium text-white">Data Visualization Illustration</p>
+                  </div>
+                </div>
               </motion.div>
               <div className="space-y-4">
                 <h3 className="text-2xl font-semibold bg-gradient-to-r from-data-blue to-data-teal bg-clip-text text-transparent">My Approach to Data</h3>
