@@ -1,6 +1,6 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { User, Book, Briefcase, CircleDot, Brain, Target } from "lucide-react";
+import { User, Book, Briefcase, Lightning, Brain, Target } from "lucide-react";
 import { motion } from "framer-motion";
 
 const About = () => {
@@ -26,7 +26,38 @@ const About = () => {
 
       <h2 className="section-title mb-10">About Me</h2>
       
-      <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-stretch">
+      <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div className="space-y-6">
+          <motion.div 
+            className="relative"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="bg-gradient-to-br from-data-blue/20 to-data-teal/20 backdrop-blur-sm p-6 rounded-2xl border border-white/10 shadow-xl">
+              <img
+                src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&q=80&w=774&ixlib=rb-4.0.3"
+                alt="Data Professional at Work"
+                className="rounded-xl w-full h-64 object-cover mb-6 shadow-lg"
+              />
+              <div className="space-y-4">
+                <h3 className="text-2xl font-semibold bg-gradient-to-r from-data-blue to-data-teal bg-clip-text text-transparent">My Approach to Data</h3>
+                <p className="text-foreground/80">
+                  I believe that effective data work is about more than just technical skills—it's about 
+                  understanding business needs, asking the right questions, and communicating insights 
+                  in a way that drives action.
+                </p>
+                <p className="text-foreground/80">
+                  My approach combines technical rigor with business acumen to deliver solutions that 
+                  create real value. I focus on building scalable, maintainable data systems that evolve 
+                  with your organization's needs.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+        
         <div className="space-y-5">
           {[
             {
@@ -76,64 +107,35 @@ const About = () => {
               </Card>
             </motion.div>
           ))}
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            viewport={{ once: true }}
+            className="mt-6"
+          >
+            <div className="flex flex-wrap gap-3">
+              {[
+                { text: "Data Analytics", color: "data-blue" },
+                { text: "Business Intelligence", color: "data-teal" },
+                { text: "Data Engineering", color: "data-purple" },
+                { text: "Data Visualization", color: "data-pink" },
+                { text: "ML Integration", color: "data-blue" },
+                { text: "Data Strategy", color: "data-teal" }
+              ].map((tag, i) => (
+                <motion.span
+                  key={i}
+                  className={`bg-${tag.color}/10 text-${tag.color} px-4 py-2 rounded-full text-sm font-medium`}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {tag.text}
+                </motion.span>
+              ))}
+            </div>
+          </motion.div>
         </div>
-        
-        <motion.div 
-          className="h-full"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="bg-gradient-to-br from-data-blue/20 to-data-teal/20 backdrop-blur-sm p-6 rounded-2xl border border-white/10 shadow-xl h-full flex flex-col">
-            <div className="flex justify-center mb-6">
-              <div className="p-4 rounded-full bg-data-blue/10 border border-data-blue/30 animate-pulse">
-                <CircleDot className="h-12 w-12 text-data-blue" />
-              </div>
-            </div>
-            <div className="space-y-4 flex-grow">
-              <h3 className="text-2xl font-semibold bg-gradient-to-r from-data-blue to-data-teal bg-clip-text text-transparent text-center">My Approach to Data</h3>
-              <p className="text-foreground/80">
-                I believe that effective data work is about more than just technical skills—it's about 
-                understanding business needs, asking the right questions, and communicating insights 
-                in a way that drives action.
-              </p>
-              <p className="text-foreground/80">
-                My approach combines technical rigor with business acumen to deliver solutions that 
-                create real value. I focus on building scalable, maintainable data systems that evolve 
-                with your organization's needs.
-              </p>
-            </div>
-          </div>
-        </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          viewport={{ once: true }}
-          className="md:col-span-2 mt-3"
-        >
-          <div className="flex flex-wrap gap-3 justify-center">
-            {[
-              { text: "Data Analytics", color: "data-blue" },
-              { text: "Business Intelligence", color: "data-teal" },
-              { text: "Data Engineering", color: "data-purple" },
-              { text: "Data Visualization", color: "data-pink" },
-              { text: "ML Integration", color: "data-blue" },
-              { text: "Data Strategy", color: "data-teal" }
-            ].map((tag, i) => (
-              <motion.span
-                key={i}
-                className={`bg-${tag.color}/10 text-${tag.color} px-4 py-2 rounded-full text-sm font-medium`}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-              >
-                {tag.text}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );
