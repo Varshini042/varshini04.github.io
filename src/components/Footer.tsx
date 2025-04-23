@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center space-x-2 mb-4 md:mb-0">
             <Code className="h-5 w-5 text-data-teal" />
-            <span className="font-mono font-bold">Varshini Sreeramsetty Portfolio</span>
+            <span className="font-mono font-bold">Varshini S</span>
           </div>
           
           <div className="flex flex-col md:flex-row md:items-center md:space-x-8 space-y-2 md:space-y-0 text-sm text-foreground/80">
@@ -22,7 +22,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-6 text-center text-xs text-foreground/40">
-          <p>&copy; {currentYear} <a href="https://varshini-sreeramsetty-portfolio.com" className="hover:text-data-teal transition-colors">Varshini Sreeramsetty Portfolio</a>. All rights reserved.</p>
+          <p>&copy; {currentYear} <a href="https://varshini-sreeramsetty-portfolio.com" className="hover:text-data-teal transition-colors">Varshini S</a>. All rights reserved.</p>
         </div>
       </div>
     </footer>
