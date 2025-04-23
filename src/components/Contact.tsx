@@ -157,8 +157,8 @@ const Contact = () => {
         
         <div data-aos="fade-left" data-aos-delay="200" className="h-full">
           <Card className="border-none shadow-md transform transition-all duration-300 hover:shadow-lg h-full">
-            <CardContent className="p-6 h-full flex flex-col justify-between">
-              <form onSubmit={handleSubmit} className="space-y-4 flex-grow">
+            <CardContent className="p-6 h-full flex flex-col justify-center">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-1">
                     Name
