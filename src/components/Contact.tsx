@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -28,14 +27,12 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Create a mailto link with the form data
       const mailtoLink = `mailto:varshini042@gmail.com?subject=${encodeURIComponent(
         formData.subject
       )}&body=${encodeURIComponent(
         `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
       )}`;
       
-      // Open the mail client
       window.open(mailtoLink, "_blank");
       
       toast({
@@ -43,7 +40,6 @@ const Contact = () => {
         description: "Your default email client has been opened with your message.",
       });
       
-      // Reset form
       setFormData({
         name: "",
         email: "",
@@ -159,10 +155,10 @@ const Contact = () => {
           </div>
         </div>
         
-        <div data-aos="fade-left" data-aos-delay="200">
+        <div data-aos="fade-left" data-aos-delay="200" className="h-full">
           <Card className="border-none shadow-md transform transition-all duration-300 hover:shadow-lg h-full">
-            <CardContent className="p-6">
-              <form onSubmit={handleSubmit} className="space-y-4">
+            <CardContent className="p-6 h-full flex flex-col justify-between">
+              <form onSubmit={handleSubmit} className="space-y-4 flex-grow">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-1">
                     Name
