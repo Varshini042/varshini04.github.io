@@ -2,18 +2,21 @@
 import { motion } from "framer-motion";
 import { ProjectData } from "./types";
 import ProjectCard from "./ProjectCard";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface ProjectsGridProps {
   projects: ProjectData[];
 }
 
 const ProjectsGrid = ({ projects }: ProjectsGridProps) => {
+  const isMobile = useIsMobile();
+
   const container = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
+        staggerChildren: isMobile ? 0.05 : 0.1
       }
     }
   };
@@ -31,11 +34,11 @@ const ProjectsGrid = ({ projects }: ProjectsGridProps) => {
 
   return (
     <motion.div 
-      className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8"
       variants={container}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: isMobile ? "-50px" : "-100px" }}
     >
       {projects.map((project, index) => (
         <motion.div key={index} variants={item} className="h-full flex">

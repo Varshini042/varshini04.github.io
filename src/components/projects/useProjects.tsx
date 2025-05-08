@@ -7,6 +7,7 @@ import { getCategoryFromRepo, getGradientFromRepo, getCategoryTags } from "./uti
 export const useProjects = () => {
   const [projects, setProjects] = useState<ProjectData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<boolean>(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -14,10 +15,19 @@ export const useProjects = () => {
       try {
         const username = "Varshini042"; // GitHub username
         console.log(`Fetching repos for ${username}`);
-        const response = await fetch(`https://api.github.com/users/${username}/repos`);
+        
+        // Use a timeout to handle potential API response delays
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error("Request timed out")), 10000)
+        );
+        
+        const fetchPromise = fetch(`https://api.github.com/users/${username}/repos`);
+        
+        // Race between fetch and timeout
+        const response = await Promise.race([fetchPromise, timeoutPromise]) as Response;
         
         if (!response.ok) {
-          throw new Error("Failed to fetch repositories");
+          throw new Error(`Failed to fetch repositories: ${response.status}`);
         }
         
         const allRepos: GitHubRepo[] = await response.json();
@@ -41,7 +51,7 @@ export const useProjects = () => {
         const projectData = filteredRepos.map(repo => ({
           title: repo.name.replace(/-/g, " ").replace(/_/g, " "),
           description: repo.description || "No description available",
-          tags: repo.topics.length > 0 ? repo.topics : getCategoryTags(repo.name),
+          tags: repo.topics && repo.topics.length > 0 ? repo.topics : getCategoryTags(repo.name),
           category: getCategoryFromRepo(repo.name),
           gradient: getGradientFromRepo(repo.name),
           repoUrl: repo.html_url
@@ -49,8 +59,10 @@ export const useProjects = () => {
         
         setProjects(projectData);
         setLoading(false);
+        setError(false);
       } catch (error) {
         console.error("Error fetching GitHub repos:", error);
+        setError(true);
         useFallbackData();
       }
     };
@@ -99,10 +111,11 @@ export const useProjects = () => {
       ];
       setProjects(fallbackProjects);
       setLoading(false);
+      setError(false);
     };
 
     fetchProjects();
   }, [toast]);
 
-  return { projects, loading };
+  return { projects, loading, error };
 };
