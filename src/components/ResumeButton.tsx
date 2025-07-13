@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 const ResumeButton = () => {
   return (
     <a 
-      href="https://drive.google.com/file/d/14NERuHxUzBrn3F17HUZOzO9HDVv3Y7ER/view?usp=drivesdk" 
+      href="https://drive.google.com/file/d/1N-NWy-J3AM4XKX_epql5-jq0ClNE19tX/view?usp=drivesdk" 
       target="_blank"
       rel="noopener noreferrer"
       className="inline-block"

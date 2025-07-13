@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { User, Book, Briefcase } from "lucide-react";
 
@@ -38,8 +37,8 @@ const About = () => {
                   <p className="text-foreground/80">
                     I hold a Bachelor of Technology in Electronics and Communications,
                     which provided me with a strong technical foundation. I am also a 
-                    Microsoft Certified Power BI Data Analyst, specializing in data 
-                    visualization and business analytics.
+                    Microsoft Certified Power BI Data Analyst and Certified Fabric Data Engineer Associate, 
+                    specializing in data visualization, business analytics, and data engineering solutions.
                   </p>
                 </div>
               </div>
