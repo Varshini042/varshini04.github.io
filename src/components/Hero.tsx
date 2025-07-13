@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
@@ -41,7 +42,7 @@ const Hero = () => {
   }, [displayText, isDeleting, currentRoleIndex, roles]);
   
   return (
-    <div className="min-h-[150vh] flex items-center justify-center bg-gradient-to-br from-background via-secondary/40 to-secondary pt-16 pb-32">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-secondary/30 to-secondary pt-16 pb-16">
       <div className="container px-4 md:px-6 py-8 md:py-10 relative">
         <div className="flex flex-col items-center justify-center text-center">
           <div className="absolute inset-0 overflow-hidden opacity-20 pointer-events-none">
